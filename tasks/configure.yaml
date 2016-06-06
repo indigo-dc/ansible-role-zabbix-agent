@@ -13,4 +13,3 @@
       - "Server="
       - "Include="
     notify: restart zabbix-agent
-
