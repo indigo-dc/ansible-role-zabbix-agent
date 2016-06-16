@@ -1,13 +1,18 @@
 ---
-  - name: Start Zabbix agent service
-    service: name=zabbix-agent state=started
-    register: zabbix_installed
-    ignore_errors: yes
+  # Add a fast check to speed reconfiguration
+  - stat: path=/usr/sbin/zabbix_agentd
+    register: zabbix_agent_installed
 
   - include: install.yaml
-    when: zabbix_installed|failed
+    when: not zabbix_agent_installed.stat.exists
 
   - include: configure.yaml
 
   - name: Start Zabbix agent service
     service: name=zabbix-agent state=started
+    ignore_errors: yes
+    register: zabbix_agent_installed
+
+  - name: Start Zabbix agent in Centos 7
+    shell: pgrep zabbix_agentd || /usr/sbin/zabbix_agentd
+    when: zabbix_installed|failed
