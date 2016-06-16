@@ -11,8 +11,8 @@
   - name: Start Zabbix agent service
     service: name=zabbix-agent state=started
     ignore_errors: yes
-    register: zabbix_agent_installed
+    register: zabbix_service
 
   - name: Start Zabbix agent in Centos 7
     shell: pgrep zabbix_agentd || /usr/sbin/zabbix_agentd
-    when: zabbix_installed|failed
+    when: zabbix_service|failed
