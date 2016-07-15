@@ -9,7 +9,7 @@
   - include: configure.yaml
 
   - name: Start Zabbix agent service
-    service: name=zabbix-agent state=started
+    service: name=zabbix-agent state=started enabled=yes
     ignore_errors: yes
     register: zabbix_service
 
