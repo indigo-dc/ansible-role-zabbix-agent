@@ -25,7 +25,7 @@
 
   - name: Download Zabbix Ubuntu 18 release deb file
     get_url: 
-      url="http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-2%2Bbionic_all.deb"
+      url="http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-2+bionic_all.deb"
       dest="/tmp/zabbix-release_3.0-1.deb"
     when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "18"
 
