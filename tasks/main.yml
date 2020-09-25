@@ -15,4 +15,4 @@
 
   - name: Start Zabbix agent in Centos 7
     shell: pgrep zabbix_agentd || /usr/sbin/zabbix_agentd
-    when: zabbix_service|failed
+    when: zabbix_service is failed
